@@ -1,0 +1,16 @@
+name: utils
+channels:
+  - pytorch-lts
+  - conda-forge
+  - anaconda
+dependencies:
+  - python=3.7.*
+  - pytorch=1.8.2
+  - torchvision=0.9.2
+  - cudatoolkit=10.2
+  - ipykernel
+  - ipywidgets
+  - pip
+  - pip:
+      - onnx
+      - onnxruntime-gpu
