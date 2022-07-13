@@ -14,8 +14,9 @@ def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
     
 def main():
-    print("onnx version:", onnx.__version__)
-    print("onnxruntime version:", ort.__version__)
+    # check onnx version on https://github.com/onnx/onnx/blob/main/docs/Versioning.md
+    print(f"IR version: {torch.onnx.ir_version} check compatibility versions on https://github.com/onnx/onnx/blob/main/docs/Versioning.md ") 
+    print(f"onnxruntime version: {ort.__version__}")
 
     onnx_version = int(onnx.__version__.split('.')[1])
     device = 'cuda'
