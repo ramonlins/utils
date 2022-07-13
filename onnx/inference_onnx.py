@@ -60,7 +60,17 @@ def main():
 
     # create a onnx runtime session
     session = ort.InferenceSession("density.onnx")
+    if is_profile:
+        sess_options = ort.SessionOptions()
 
+        sess_options.enable_profiling = True
+        sess_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_BASIC
+        
+        session = ort.InferenceSession("density.onnx", sess_options=sess_options, providers=providers)
+    else:
+        session = ort.InferenceSession("density.onnx", providers=providers)
+
+    
     # run experiments
     onnx_time_list = []
     for seed in range(10):
